@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import RegistrationForm from './registration-form.js';
 
+const HTTP_REQUEST_DELAY = 2000;
+const HIDE_MESSAGE_DELAY = 2000;
+
 class RegistrationFormContainer extends Component {
   constructor(props) {
     super(props);
@@ -13,11 +16,11 @@ class RegistrationFormContainer extends Component {
 
   hideMessage() {
     //Hide After X secondes
-    setTimeout(() => this.setState({submitting: false, submitted: false}), 2000);
+    setTimeout(() => this.setState({submitting: false, submitted: false}), HIDE_MESSAGE_DELAY);
   }
 
-  showMessage() {
-    setTimeout(() => this.setState({submitting: false, submitted: true}, this.hideMessage), 2000);
+  submitHttpRequest() {
+    setTimeout(() => this.setState({submitting: false, submitted: true}, this.hideMessage), HTTP_REQUEST_DELAY);
   }
 
   handleSubmit = (event) => {
@@ -26,7 +29,7 @@ class RegistrationFormContainer extends Component {
     this.setState({submitting: true});
 
     //Fake HTTP Request + Message
-    this.showMessage();
+    this.submitHttpRequest();
   }
 
   render() {

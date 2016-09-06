@@ -8,7 +8,8 @@ export default function RegistrationForm({onSubmit, submitted, submitting, error
       {
         submitted ?
         <div className="notification is-success">
-          Your registration is done thanks :-)
+          Your registration is done thanks.
+					Now you can sign in :-)
         </div>
         : null
       }
