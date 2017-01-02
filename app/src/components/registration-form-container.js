@@ -9,8 +9,7 @@ class RegistrationFormContainer extends Component {
     super(props);
     this.state = {
       submitted : false,
-      submitting: false,
-      errors : []
+      submitting: false
     }
   }
 
