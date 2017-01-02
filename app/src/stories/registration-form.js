@@ -1,16 +1,18 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf, action } from '@kadira/storybook';
 
 import RegistrationForm from '../components/registration-form.js';
 
-const mockSubmit = () => {};
-const noErrors = [];
+const mockSubmit = (e) => {
+  e.preventDefault();
+  const submitAction = action('submitted');
+  submitAction(e);
+};
 
 storiesOf('Registration Form', module)
   .add('default', () => (
     <RegistrationForm
       onSubmit={mockSubmit}
-      errors={noErrors}
       submitting={false}
       submitted={false}
     />
@@ -18,14 +20,12 @@ storiesOf('Registration Form', module)
   .add('submitting', () => (
     <RegistrationForm
       onSubmit={mockSubmit}
-      errors={noErrors}
       submitting
       submitted={false}
     />  ))
   .add('submitted', () => (
     <RegistrationForm
       onSubmit={mockSubmit}
-      errors={noErrors}
       submitting={false}
       submitted
     />
